@@ -1,0 +1,442 @@
+<!--
+Repository: Alexandre_Portfolio_Demos
+Files contained below as separate HTML files inside this single document.
+
+INSTRUCTIONS:
+- Copy each file section into its own folder/file (e.g. ImmoMaroc/index.html, CoachDavid/index.html, BijouxElegance/index.html).
+- Each page uses Tailwind via CDN (play CDN) and AOS via CDN. No build step required. Drop on Netlify as-is.
+- Replace placeholder texts, images and WhatsApp/email links with your real content.
+
+-->
+
+<!-- ==========================
+File: ImmoMaroc/index.html
+Description: Vitrine immobiliere (Tailwind + AOS). Minimal images.
+========================== -->
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ImmoMaroc — Agence immobilière</title>
+  <meta name="description" content="ImmoMaroc - site vitrine exemple par Alexandre DevWeb" />
+  <!-- Tailwind Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- AOS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <style>
+    .gradient-bg {
+    background: linear-gradient(135deg, #1d1d2b 0%, #2A1F55 90%, #100e42 100%);
+}
+    .radient-bg {
+  background: linear-gradient(135deg, #4a568a 0%, #6f548a 100%);
+
+}
+    .adient-bg {
+ background: linear-gradient(135deg, #1F1C2C 0%, #928DAB 100%);
+}
+
+    /* Custom styles */
+    .accent { color: #0B3C5D; }
+    .accent-bg { background-color: #0B3C5D; }
+    .gold { color: #D4AF37; }
+
+    .nav-scrolled {
+  background-color: rgba(0, 0, 0, 0.7); /* léger fond sombre transparent */
+  backdrop-filter: blur(6px);            /* flou léger du fond */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+
+}
+    /* Navbar style when scrolled */
+    .nav-scrolled {
+      background-color: rgba(0,0,0,0.7);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    /* Smooth transform for header hide/show */
+    #header { transition: transform 0.4s ease, background-color 0.3s ease; }
+  </style>
+  <script>
+    tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: "#1E1E1E",   // couleur principale du site
+        accent: "#00C9A7",    // couleur d'accent turquoise
+        text: "#FFFFFF"       // texte blanc
+      },
+      fontFamily: {
+        'montserrat': ['Montserrat', 'sans-serif']
+      }
+    }
+  }
+}
+
+
+  </script>
+</head>
+<body class="bg-white text-gray-800 antialiased">
+  <!-- Header -->
+  <header id="header" class="fixed top-0 left-0 w-full gradient-bg z-50">
+    <div class="container mx-auto flex items-center justify-between py-4 px-6">
+      <!-- Logo -->
+      <h1 class="text-2xl md:text-3xl text-accent font-bold">ImmoMaroc</h1>
+
+      <!-- Navigation desktop -->
+      <nav class="hidden md:flex space-x-8">
+        <a href="#accueil" class="text-white hover:text-gold transition font-medium">Accueil</a>
+        <a href="#apropos" class="text-white hover:text-gold transition font-medium">À propos</a>
+        <a href="#galerie" class="text-white hover:text-gold transition font-medium">Galerie</a>
+        <a href="#temoignages" class="text-white hover:text-gold transition font-medium">Témoignages</a>
+        <a href="#contact" class="text-white hover:text-gold transition font-medium">Contact</a>
+      </nav>
+
+      <!-- Mobile Hamburger -->
+      <button id="menu-btn" class="md:hidden text-white focus:outline-none">
+        <i data-feather="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-black bg-opacity-90 w-full px-6 py-4 flex flex-col space-y-4">
+      <a href="#accueil" class="text-white hover:text-gold transition py-2">Accueil</a>
+      <a href="#apropos" class="text-white hover:text-gold transition py-2">À propos</a>
+      <a href="#galerie" class="text-white hover:text-gold transition py-2">Galerie</a>
+      <a href="#temoignages" class="text-white hover:text-gold transition py-2">Témoignages</a>
+      <a href="#contact" class="text-white hover:text-gold transition py-2">Contact</a>
+      <button id="dark-mode-toggle" class="text-white hover:text-gold transition py-2 text-left">
+        Mode Sombre
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative">
+    <div class="min-h-screen md:min-h-screen bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=1600&auto=format&fit=crop&sat=-50');">
+      <div class="absolute inset-0 bg-black/40 flex items-center">
+        <div class="max-w-4xl mx-auto px-6 text-white" data-aos="fade-up">
+          <h2 class="text-3xl md:text-5xl font-extrabold">Trouvez votre futur chez-vous avec <span class="gold">ImmoMaroc</span></h2>
+          <p class="mt-4 max-w-xl">Sélection de biens hautement qualifiés au Maroc — maisons, appartements et villas.</p>
+          <a href="#properties" class="inline-block mt-6 px-6 py-3 gradient-bg text-accent font-semibold rounded-lg hover:shadow-lg">Voir les offres</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Properties -->
+  <section id="galerie" class=" mx-auto p-11   min-h-screen gradient-bg">
+    <h3 class="text-2xl font-bold mb-6" data-aos="fade-right">Biens disponibles</h3>
+    <div class="grid gap-6 md:grid-cols-3">
+      <!-- Card 1 -->
+      <article class="radient-bg rounded-xl shadow p-4" data-aos="fade-up">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop&sat=-30" alt="Villa" class="w-full h-40 object-cover rounded-lg mb-4">
+        <h4 class="font-semibold">Villa moderne - Casablanca</h4>
+        <p class="text-sm text-gray-600">4 chambres • 3 salles de bain</p>
+        <p class="mt-2 text-lg font-bold">120 000 €</p>
+        <div class="mt-4">
+          <a href="#" class="text-sm text-white bg-accent px-4 py-2 rounded hover:opacity-90">Voir plus</a>
+        </div>
+      </article>
+      <!-- Card 2 -->
+      <article class="radient-bg rounded-xl shadow p-4" data-aos="fade-up">
+        <img src="2.jpg" alt="Villa" class="w-full h-40 object-cover rounded-lg mb-4">
+        <h4 class="font-semibold">Appartement - Casablanca</h4>
+        <p class="text-sm text-gray-600">4 chambres • 3 salles de bain</p>
+        <p class="mt-2 text-lg font-bold">20 000 €</p>
+        <div class="mt-4">
+          <a href="#" class="text-sm text-white bg-accent px-4 py-2 rounded hover:opacity-90">Voir plus</a>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="radient-bg rounded-xl shadow p-4" data-aos="fade-up" data-aos-delay="100">
+        <img src="5.jpg" alt="Appartement" class="w-full h-40 object-cover rounded-lg mb-4">
+        <h4 class="font-semibold">Appartement - Marrakech</h4>
+        <p class="text-sm text-gray-600">2 chambres • 1 salle de bain</p>
+        <p class="mt-2 text-lg font-bold">40 000 €</p>
+        <div class="mt-4">
+          <a href="#" class="text-sm text-white bg-accent px-4 py-2 rounded hover:opacity-90">Voir plus</a>
+        </div>
+      </article>
+      <!-- Card 4 -->
+      <article class="radient-bg rounded-xl shadow p-4" data-aos="fade-up" data-aos-delay="100">
+        <img src="3.jpg" alt="Appartement" class="w-full h-40 object-cover rounded-lg mb-4">
+        <h4 class="font-semibold">Appartement - Marrakech</h4>
+        <p class="text-sm text-gray-600">2 chambres • 1 salle de bain</p>
+        <p class="mt-2 text-lg font-bold">30 000 €</p>
+        <div class="mt-4">
+          <a href="#" class="text-sm text-white bg-accent px-4 py-2 rounded hover:opacity-90">Voir plus</a>
+        </div>
+      </article>
+
+
+      <!-- Card 5 -->
+      <article class="radient-bg rounded-xl shadow p-4" data-aos="fade-up" data-aos-delay="200">
+        <img src="6.jpg" alt="Maison" class="w-full h-40 object-cover rounded-lg mb-4">
+        <h4 class="font-semibold">Appartement - Rabat</h4>
+        <p class="text-sm text-gray-600">3 chambres • 2 salles de bain</p>
+        <p class="mt-2 text-lg font-bold">15 000 €</p>
+        <div class="mt-4">
+          <a href="#" class="text-sm text-white bg-accent px-4 py-2 rounded hover:opacity-90">Voir plus</a>
+        </div>
+      </article>
+    
+    <!-- Card 6 -->
+      <article class="radient-bg rounded-xl shadow p-4" data-aos="fade-up" data-aos-delay="200">
+        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1200&auto=format&fit=crop&sat=-20" alt="Maison" class="w-full h-40 object-cover rounded-lg mb-4">
+        <h4 class="font-semibold">Maison familiale - Rabat</h4>
+        <p class="text-sm text-gray-600">3 chambres • 2 salles de bain</p>
+        <p class="mt-2 text-lg font-bold">85 000 €</p>
+        <div class="mt-4">
+          <a href="#" class="text-sm text-white bg-accent px-4 py-2 rounded hover:opacity-90">Voir plus</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="apropos" class=" mx-auto p-6 py-12 radient-bg rounded-lg">
+    <div class="md:flex md:gap-8 items-center">
+      <div class="md:w-1/2" data-aos="fade-right">
+        <h3 class="text-3xl font-bold">À propos de ImmoMaroc</h3>
+        <p class="mt-4 text-xl">ImmoMaroc accompagne ses clients dans l'achat, la vente et la location de biens à travers tout le Maroc. Nous sélectionnons des biens de qualité et proposons un accompagnement personnalisé. Chez ImmoMaroc, nous croyons que trouver un bien immobilier ne devrait pas être un parcours compliqué.
+Depuis plusieurs années, notre équipe accompagne ses clients à travers tout le Maroc</p>
+      </div>
+      <div class="md:w-1/2 mt-6 md:mt-0" data-aos="fade-left">
+        <ul class="space-y-3">
+          <li class="flex items-start gap-3">
+            <span class="w-3 h-3 bg-accent rounded-full mt-2"></span>
+            <div>
+              <h4 class="font-semibold text-2xl">Sélection rigoureuse</h4>
+              <p class="text-sm text-white text-xl">Biens vérifiés et présentés clairement</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-3 h-3 bg-accent rounded-full mt-2"></span>
+            <div>
+              <h4 class="font-semibold text-2xl">Accompagnement personnalisé</h4>
+              <p class="text-sm text-white text-xl">De la visite à la signature</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Témoignages -->
+    <section id="temoignages" class="py-20 gradient-bg" data-aos="fade-up"  data-aos-delay="300">
+        <div class="container mx-auto px-6">
+            <h2 class="font-display text-4xl text-blue-200 mb-16 text-center">Nos Clients Parlent</h2>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Témoignage 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="http://static.photos/people/100x100/1" alt="Client 1" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Sophie Martin</h4>
+                            <div class="flex text-gold-500">
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">
+                        “Un grand merci à ImmoMaroc ! Grâce à eux, j’ai trouvé un appartement moderne à Casablanca en moins d’une semaine. L’équipe a été à l’écoute et très réactive.”
+                    </p>
+                </div>
+
+                <!-- Témoignage 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="http://static.photos/people/100x100/2" alt="Client 2" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Pierre Lambert</h4>
+                            <div class="flex text-gold-500">
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">
+                        “Service professionnel et humain à la fois. Ils m’ont accompagné de la visite jusqu’à la signature, tout s’est déroulé sans stress. Je recommande vivement !”."
+                    </p>
+                </div>
+
+                <!-- Témoignage 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="http://static.photos/people/100x100/3" alt="Client 3" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Élodie Dupont</h4>
+                            <div class="flex text-gold-500">
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">
+                        “Des conseillers disponibles, un site clair et un suivi impeccable. J’ai pu vendre mon bien rapidement et à un bon prix.”
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- Contact -->
+    <section id="contact" class="py-20 bg-gray-100" data-aos="fade-up"  data-aos-delay="300">
+        <div class="container mx-auto px-6">
+            <h2 class="font-display text-4xl font-bold mb-16 text-center">Nous Contacter</h2>
+
+            <div class="grid md:grid-cols-2 gap-10">
+                <div>
+                    <h3 class="font-display text-2xl font-bold mb-6">Informations</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i data-feather="map-pin" class="w-5 h-5 mr-4 mt-1 text-gold-500"></i>
+                            <div>
+                                <h4 class="font-bold">Adresse</h4>
+                                <p class="text-gray-600">08 Rue de Richeti, 75004 Casablanca</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-feather="phone" class="w-5 h-5 mr-4 mt-1 text-gold-500"></i>
+                            <div>
+                                <h4 class="font-bold">Téléphone</h4>
+                                <p class="text-gray-600">+33 1 23 45 67 89</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-feather="mail" class="w-5 h-5 mr-4 mt-1 text-gold-500"></i>
+                            <div>
+                                <h4 class="font-bold">Email</h4>
+                                <p class="text-gray-600">contact@immomaroc.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-feather="clock" class="w-5 h-5 mr-4 mt-1 text-gold-500"></i>
+                            <div>
+                                <h4 class="font-bold">Horaires</h4>
+                                <p class="text-gray-600">Lundi - Samedi: 12h - 23h</p>
+                            
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <h4 class="font-bold mb-4">Suivez-nous</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-black hover:text-gold-500 transition duration-300">
+                                <i data-feather="instagram" class="w-6 h-6"></i>
+                            </a>
+                            <a href="#" class="text-black hover:text-gold-500 transition duration-300">
+                                <i data-feather="facebook" class="w-6 h-6"></i>
+                            </a>
+                            <a href="#" class="text-black hover:text-gold-500 transition duration-300">
+                                <i data-feather="twitter" class="w-6 h-6"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Methods -->
+                    <div class="space-y-6" data-aos="fade-left">
+                        <h3 class="text-2xl font-semibold text-accent mb-6">Autres moyens de contact</h3>
+                        
+                        <a href="mailto:contact@alexandre-devweb.com" 
+                           class="flex items-center space-x-4 p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors">
+                            <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center">
+                                <i class="fas fa-envelope text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-black">Email</p>
+                                <p class="text-gray-300">contact@alexandre-devweb.com</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://wa.me/33612345678" 
+                           class="flex items-center space-x-4 p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors">
+                            <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center">
+                                <i class="fab fa-whatsapp text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-black">WhatsApp</p>
+                                <p class="text-gray-300">+33 6 12 34 56 78</p>
+                            </div>
+                        </a>
+            </div>
+        </div>
+    </section>
+  <!-- Footer -->
+  <footer class="border-t  py-6 text-center h-40 radient-bg text-sm text-blue-200">
+    © 2025 ImmoMaroc — Tous droits réservés
+  </footer>
+
+  <!-- AOS script -->
+ <!-- Scripts -->
+ <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Feather icons
+      feather.replace();
+
+      // AOS
+      AOS.init({ duration: 800, easing: 'ease-in-out', once: true });
+
+      // Mobile menu toggle
+      const menuBtn = document.getElementById('menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        const icon = menuBtn.querySelector('svg');
+        if (mobileMenu.classList.contains('hidden')) icon.setAttribute('data-feather','menu');
+        else icon.setAttribute('data-feather','x');
+        feather.replace();
+      });
+
+      // Dark mode toggle
+      const darkToggle = document.getElementById('dark-mode-toggle');
+      darkToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        darkToggle.textContent = document.body.classList.contains('dark-mode') ? 'Mode Clair' : 'Mode Sombre';
+      });
+    });
+
+    // Scroll header
+    let lastScrollTop = 0;
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', function() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollTop > lastScrollTop) header.style.transform = 'translateY(-100%)';
+      else header.style.transform = 'translateY(0)';
+
+      // Navbar style after scroll
+      if (scrollTop > 100) header.classList.add('nav-scrolled');
+      else header.classList.remove('nav-scrolled');
+
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    });
+  </script>
+
+
+</body>
+</html>
+
+
+<!-- ==========================
+File: CoachDavid/index.html
+Description: Site vitrine pour coach (Tailwind + AOS)
+========================== -->
